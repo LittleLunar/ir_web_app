@@ -1,6 +1,9 @@
 # Created by https://www.toptal.com/developers/gitignore/api/flask,windows,macos,linux,python,jetbrains,pycharm+all
 # Edit at https://www.toptal.com/developers/gitignore?templates=flask,windows,macos,linux,python,jetbrains,pycharm+all
 
+elasticsearch/
+kibana/
+
 ### Flask ###
 instance/*
 !instance/.gitignore
