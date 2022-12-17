@@ -6,7 +6,6 @@ from Netflix import *
 import json
 import os
 
-password="mH6I8OaoWT-3xZYpeeke"
 
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}})
