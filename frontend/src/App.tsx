@@ -1,34 +1,60 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import React, { useEffect, useRef, useState } from "react";
+import { Box, Container, Stack, TextField } from "@mui/material";
+import GridViewResult from "./components/GridViewResult.Component";
+import SearchInput from "./components/SearchInput.Component";
+import ListViewResult from "./components/ListViewResult.Component";
+import useMovieSearch from "./hooks/useMovieSearch";
+import { IPaginationParam } from "./apis/types/general.type";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [searchInput, setSearchInput] = useState<string>("");
+  const [paginationParam, setPaginationParam] = useState<IPaginationParam>({
+    page: 1,
+    size: 50,
+  });
+  const {
+    result: movies,
+    loading,
+    error,
+  } = useMovieSearch({ name: searchInput, paginationParam: paginationParam });
+  const onSearchInputChange = async (
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    setSearchInput(event.target.value);
+    setPaginationParam((prev) => ({ ...prev, page: 1 }));
+  };
 
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
-  )
+    <Container
+      sx={{
+        minHeight: "100vh",
+        display: "flex",
+        // gap: 4,
+        flexDirection: "column",
+      }}
+    >
+      <Box
+        sx={{
+          display: "flex",
+          height: "10vh",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <TextField
+          label="Search"
+          variant="standard"
+          fullWidth
+          value={searchInput}
+          onChange={onSearchInputChange}
+        />
+      </Box>
+      <ListViewResult data={[...new Array(40).map((e) => 1)]} />
+      {/* <ListViewResult data={movies} /> */}
+      {/* <GridViewResult data={[...new Array(40).map((e) => 1)]} /> */}
+      {/* <GridViewResult data={movies} /> */}
+    </Container>
+  );
 }
 
-export default App
+export default App;
