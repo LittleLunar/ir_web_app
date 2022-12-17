@@ -1,0 +1,23 @@
+ทำการ Setup ตัว elasticsearch และ kibana ก่อน โดยการโหลดแล้วกดใช้งาน
+แนะนำให้ Config ตัว elasticsearch หน่อย เพราะกินแรมเยอะ Config ยังไง ให้ google เอา
+ทำตามขั้นตอน installation ใน elastic version 8.5 
+******* Version ล่าสุด 8.5 มันให้ทำ Authen ด้วย เมื่อ boot ตัว Elastic ได้แล้ว ให้ดู Console ดีๆ จะมีรหัสผ่านอยู่ในนั้น
+
+ใน app.py basic_auth
+Username : elastic 
+Password : มาจาก Console elasticsearch
+ให้ใส่ค่า password แทนใน app.py แล้วจะใช้งานได้
+
+ใน app.py จะมี Route อยู่ 2 ตัว
+ตัวแรกคือ initialization คือ init index ชื่อ netflix แล้วเพิ่มเอกสารเข้าไป
+เอกสาร netflix มาจาก https://github.com/jameskang410/scraping-netflix
+ลองใช้แล้ว มันมีปัญหา url เก่าเกิน เลยเอาแค่ไฟล์ Json มาใช้ กูเอาไฟล์มาใส่ใน dir netflix
+Route ตัวนี้ใช้ครั้งแรกครั้งเดียว มันจะเพิ่ม index เข้าไปใน node elastic ของเรา แล้วจะอยู่ในนั้นจนกว่าจะลบหรือปิด node
+
+route 2 คือ search รับ parameter 1 ค่าคือ text อยาก search อะไรก็พิมพ์ไป /search?text=rakgaiyangna
+ตัวนี้ return ออกมาเป็น code: 200, document ที่ return ในรูป json, message: Ok()
+fronted ก็เอา document ที่ return มาไปใช้ได้เลย มันมีชื่อเรื่อง ลิ้งค์netflix รูป ประมาณนี้
+
+สุดท้าย นายภูมิขอไปนอนก่อน มาใหม่วันอาทิตย์
+รักนะ จุ๊บๆ
+นายภูมิ 17/12/2022 6:59 am
