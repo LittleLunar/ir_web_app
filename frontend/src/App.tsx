@@ -1,8 +1,6 @@
-import React, { useEffect, useRef, useState } from "react";
-import { Box, Container, Stack, TextField } from "@mui/material";
+import React, { useState } from "react";
+import { Box, Container, TextField } from "@mui/material";
 import GridViewResult from "./components/GridViewResult.Component";
-import SearchInput from "./components/SearchInput.Component";
-import ListViewResult from "./components/ListViewResult.Component";
 import useMovieSearch from "./hooks/useMovieSearch";
 import { IPaginationParam } from "./apis/types/general.type";
 
@@ -10,7 +8,7 @@ function App() {
   const [searchInput, setSearchInput] = useState<string>("");
   const [paginationParam, setPaginationParam] = useState<IPaginationParam>({
     page: 1,
-    size: 50,
+    size: 10000,
   });
   const {
     result: movies,
@@ -25,35 +23,38 @@ function App() {
   };
 
   return (
-    <Container
+    <Box
       sx={{
         minHeight: "100vh",
         display: "flex",
         // gap: 4,
         flexDirection: "column",
+        padding: "0px 5vw 0px 5vw",
       }}
     >
       <Box
         sx={{
-          display: "flex",
+          position: "fixed",
+          top: 0,
+          paddingTop: "1vh",
+          backgroundColor: "rgb(60, 60, 60)",
           height: "10vh",
-          justifyContent: "center",
-          alignItems: "center",
+          width: "90vw",
         }}
       >
         <TextField
           label="Search"
           variant="standard"
           fullWidth
-          inputProps={{ style: { color: "white" } }}
-          color="primary"
+          inputProps={{ style: { color: "white", width: "100%" } }}
+          color="error"
           value={searchInput}
           onChange={onSearchInputChange}
         />
       </Box>
       <GridViewResult data={movies} />
       {/* <GridViewResult data={movies} /> */}
-    </Container>
+    </Box>
   );
 }
 

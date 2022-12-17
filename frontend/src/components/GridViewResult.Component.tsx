@@ -1,6 +1,5 @@
 import { Theme } from "@emotion/react";
-import { Box, Grid, SxProps, Typography } from "@mui/material";
-import React from "react";
+import { Grid, SxProps, Typography } from "@mui/material";
 import ResultCard from "./ResultCard.Component";
 import { IMovie } from "../models/movie.model";
 import { IElasticHitsResult } from "../models/elasticsearch_result.model";
@@ -13,9 +12,8 @@ const GridViewResult = ({
   sx,
   data = [],
 }: IProps<IElasticHitsResult<IMovie>>) => {
-  const a: number = 1;
   return (
-    <Grid container gap={5} sx={sx ?? { flex: 1 }}>
+    <Grid container gap={5} sx={sx ?? { flex: 1, marginTop: "11vh" }}>
       {data.map((e, idx) => (
         <Grid
           item
