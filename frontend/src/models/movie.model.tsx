@@ -1,6 +1,7 @@
 export interface IMovie {
-  id?: number;
-  name?: string;
+  boxart?: string;
+  playerUrl?: string;
+  titleId?: number;
+  trackId?: number;
   title?: string;
-  [index: string]: any;
 }

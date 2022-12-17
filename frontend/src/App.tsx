@@ -45,13 +45,13 @@ function App() {
           label="Search"
           variant="standard"
           fullWidth
+          inputProps={{ style: { color: "white" } }}
+          color="primary"
           value={searchInput}
           onChange={onSearchInputChange}
         />
       </Box>
-      <ListViewResult data={[...new Array(40).map((e) => 1)]} />
-      {/* <ListViewResult data={movies} /> */}
-      {/* <GridViewResult data={[...new Array(40).map((e) => 1)]} /> */}
+      <GridViewResult data={movies} />
       {/* <GridViewResult data={movies} /> */}
     </Container>
   );

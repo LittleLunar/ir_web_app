@@ -16,6 +16,7 @@ const ListViewResult = ({
     <List sx={sxContainer}>
       {data.map((e) => (
         <ListItem
+          key={e}
           sx={{
             "&:hover": {
               backgroundColor: "rgba(0,0,0, 0.1)",

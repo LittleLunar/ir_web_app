@@ -1,24 +1,25 @@
 import { Theme } from "@emotion/react";
-import { Box, Card, SxProps } from "@mui/material";
+import { Box, Card, SxProps, Typography } from "@mui/material";
 import React from "react";
+import { IMovie } from "../models/movie.model";
 
-interface IProps {
+interface IProps<T> {
   sx?: SxProps<Theme>;
-  data: any;
+  data: T;
 }
 
-const ResultCard = ({ sx, data }: IProps) => {
+const ResultCard = ({ sx, data }: IProps<IMovie>) => {
   return (
     <Box
-      sx={
-        sx ?? {
-          position: "relative",
-          width: "100%",
-          height: "100%",
-          backgroundColor: "cyan",
-        }
-      }
-    ></Box>
+      sx={{
+        borderRadius: "8px",
+        width: 166,
+        height: 233,
+        ...sx,
+      }}
+    >
+      <img src={data.boxart} alt={data.title} />
+    </Box>
   );
 };
 

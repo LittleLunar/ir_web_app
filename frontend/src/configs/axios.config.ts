@@ -11,6 +11,10 @@ axios.interceptors.request.use(
         Authorization: `Bearer ${token}`,
       };
     }
+    request.headers = {
+      ...request.headers,
+      "Access-Control-Allow-Origin": "*",
+    };
 
     return request;
   },
