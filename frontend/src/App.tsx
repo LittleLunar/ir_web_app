@@ -35,11 +35,14 @@ function App() {
       <Box
         sx={{
           position: "fixed",
+          zIndex: 10,
           top: 0,
+          left: 0,
           paddingTop: "1vh",
+          paddingX: "10rem",
           backgroundColor: "rgb(60, 60, 60)",
           height: "10vh",
-          width: "90vw",
+          width: "100vw",
         }}
       >
         <TextField
